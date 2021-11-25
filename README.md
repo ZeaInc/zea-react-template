@@ -1,4 +1,4 @@
-# Zea + React template
+# Zea + React
 
 This is an example app which intregrates React and Zea's tools, such as the
 [Zea Engine](https://www.zea.live/en/zea-engine).
