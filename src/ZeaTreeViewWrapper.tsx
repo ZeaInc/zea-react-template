@@ -1,13 +1,14 @@
 import '@zeainc/zea-tree-view'
 import { useEffect, useRef } from 'react'
 
-const ZeaTreeViewWrapper = () => {
-  const ref = useRef()
+const ZeaTreeViewWrapper = (props: any) => {
+  const ref = useRef<any>()
 
   useEffect(() => {
     const { current } = ref
+    const { scene } = props
 
-    console.log(current)
+    current.setTreeItem(scene.getRoot())
   })
 
   // @ts-ignore

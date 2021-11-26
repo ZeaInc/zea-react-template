@@ -12,11 +12,14 @@ import {
 } from '@zeainc/zea-engine'
 
 class Viewport3D extends React.Component<any, any> {
-  scene: Scene = new Scene()
+  scene: Scene
   renderer?: GLRenderer
   canvasRef: React.RefObject<any>
+
   constructor(props: any) {
     super(props)
+
+    this.scene = props.scene
 
     this.canvasRef = React.createRef()
   }
