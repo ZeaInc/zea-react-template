@@ -11,16 +11,21 @@ import {
   Xfo,
 } from '@zeainc/zea-engine'
 
+//@ts-ignore
+import { CADAsset } from '@zeainc/zea-cad'
+
 class Viewport3D extends React.Component<any, any> {
   scene: Scene
   renderer?: GLRenderer
   canvasRef: React.RefObject<any>
 
+  file
+
   constructor(props: any) {
     super(props)
 
     this.scene = props.scene
-
+    this.file = props.file
     this.canvasRef = React.createRef()
   }
 
@@ -33,9 +38,13 @@ class Viewport3D extends React.Component<any, any> {
     const camera = this.renderer.getViewport().getCamera()
     camera.setPositionAndTarget(new Vec3(6, 6, 5), new Vec3(0, 0, 1.5))
 
-    this.setupScene()
+    //this.setupScene()
+    //this.createCadAsset()
   }
 
+  componentDidUpdate() {
+    console.log(this.props.file)
+  }
   setupScene() {
     const material = new Material('surfaces', 'SimpleSurfaceShader')
     material.getParameter('BaseColor')?.setValue(new Color(0.5, 0.5, 0.5))
@@ -60,7 +69,15 @@ class Viewport3D extends React.Component<any, any> {
     geomItem2.addChild(geomItem4)
   }
 
-  // The Viewport3D component needs a reference to the canvas in order to initialize.
+  createCadAsset() {
+    const cadAsset = new CADAsset()
+    cadAsset.load('../data/HC_SRO4.zcad')
+    this.scene.getRoot().addChild(cadAsset)
+    cadAsset.getGeometryLibrary().once('loaded', () => {
+      console.log('loaded')
+    })
+  }
+
   render() {
     return (
       <canvas
