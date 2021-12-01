@@ -10,7 +10,7 @@ import './App.css'
 
 const App = () => {
   const [scene] = useState<Scene>(new Scene())
-
+  const [selected, setSelected] = useState(null)
   useEffect(() => {
     console.log('hi')
   })
@@ -25,7 +25,13 @@ const App = () => {
           </ReflexElement>
           <ReflexSplitter />
           <ReflexElement>
-            <Viewport3D scene={scene} />
+            <Viewport3D
+              scene={scene}
+              selected={selected}
+              setSelected={(selected: number) => {
+                setSelected(selected)
+              }}
+            />
           </ReflexElement>
         </ReflexContainer>
       </ReflexElement>

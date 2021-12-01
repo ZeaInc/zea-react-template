@@ -18,14 +18,26 @@ class Viewport3D extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props)
-
+    this.state = {
+      setSelected: props.setSelected,
+      setTree: props.setTree,
+    }
     this.scene = props.scene
 
     this.canvasRef = React.createRef()
   }
+  componentDidUpdate(prevProps: any) {
+    if (prevProps.selected !== this.props.selected) {
+      this.unhighlight(prevProps.selected)
+      this.toggle_highlight(this.props.selected)
+    } else {
+      this.toggle_highlight(this.props.selected)
+    }
+  }
 
   // this method is called when the component is initially mounted and initially renders.
   componentDidMount() {
+    console.log('mounted')
     this.renderer = new GLRenderer(this.canvasRef.current)
     this.renderer.setScene(this.scene)
     this.scene.setupGrid(10, 10)
@@ -34,6 +46,15 @@ class Viewport3D extends React.Component<any, any> {
     camera.setPositionAndTarget(new Vec3(6, 6, 5), new Vec3(0, 0, 1.5))
 
     this.setupScene()
+
+    this.renderer.getViewport().on('pointerDown', (event: any) => {
+      const geomItem = event?.intersectionData?.geomItem
+      if (geomItem instanceof GeomItem) {
+        this.state.setSelected(geomItem)
+      } else {
+        this.state.setSelected(null)
+      }
+    })
   }
 
   setupScene() {
@@ -59,7 +80,25 @@ class Viewport3D extends React.Component<any, any> {
     geomItem2.addChild(geomItem3)
     geomItem2.addChild(geomItem4)
   }
+  toggle_highlight(treeItem: GeomItem) {
+    if (treeItem == null) return
+    if (!(treeItem instanceof GeomItem)) return
 
+    if (!treeItem.isHighlighted()) {
+      treeItem.addHighlight('hl', new Color(1.0, 1.0, 0.2, 0.5), false)
+    } else {
+      treeItem.removeHighlight('hl', false)
+    }
+  }
+
+  unhighlight(treeItem: GeomItem) {
+    if (treeItem == null) return
+    if (!(treeItem instanceof GeomItem)) return
+
+    if (treeItem.isHighlighted()) {
+      treeItem.removeHighlight('hl', false)
+    }
+  }
   // The Viewport3D component needs a reference to the canvas in order to initialize.
   render() {
     return (
