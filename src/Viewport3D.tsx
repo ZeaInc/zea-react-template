@@ -12,8 +12,10 @@ import {
 } from '@zeainc/zea-engine'
 
 //@ts-ignore
-import { CADAsset } from '@zeainc/zea-cad'
+//import { CADAsset } from '@zeainc/zea-cad'
+import { CADAsset } from '../node_modules/@zeainc/zea-cad/dist/index.umd.js'
 
+//import { CADAsset } = zeaCAD
 class Viewport3D extends React.Component<any, any> {
   scene: Scene
   renderer?: GLRenderer
@@ -39,11 +41,13 @@ class Viewport3D extends React.Component<any, any> {
     camera.setPositionAndTarget(new Vec3(6, 6, 5), new Vec3(0, 0, 1.5))
 
     //this.setupScene()
-    //this.createCadAsset()
+    this.loadCADAsset('../data/Dead_eye_bearing.zcad')
   }
 
   componentDidUpdate() {
-    console.log(this.props.file)
+    console.log('here')
+    const file = '../data/' + this.props.file[0].path
+    this.loadCADAsset(file)
   }
   setupScene() {
     const material = new Material('surfaces', 'SimpleSurfaceShader')
@@ -69,13 +73,15 @@ class Viewport3D extends React.Component<any, any> {
     geomItem2.addChild(geomItem4)
   }
 
-  createCadAsset() {
-    const cadAsset = new CADAsset()
-    cadAsset.load('../data/HC_SRO4.zcad')
-    this.scene.getRoot().addChild(cadAsset)
-    cadAsset.getGeometryLibrary().once('loaded', () => {
-      console.log('loaded')
+  loadCADAsset(filepath: string) {
+    const asset = new CADAsset()
+    asset.load(filepath).then(() => {
+      this.renderer.frameAll()
     })
+    asset.getGeometryLibrary().on('loaded', () => {
+      postMessage('done-loading')
+    })
+    this.scene.getRoot().addChild(asset)
   }
 
   render() {

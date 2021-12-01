@@ -9,6 +9,9 @@ const ZeaTreeViewWrapper = (props: any) => {
     const { scene } = props
     if(!current.rootTreeItem)
       current.setTreeItem(scene.getRoot())
+
+    //const {selected} = props
+    //current.setSelection(selected, true)
   })
 
   // @ts-ignore
