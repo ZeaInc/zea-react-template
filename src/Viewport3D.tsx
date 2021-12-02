@@ -41,13 +41,13 @@ class Viewport3D extends React.Component<any, any> {
     camera.setPositionAndTarget(new Vec3(6, 6, 5), new Vec3(0, 0, 1.5))
 
     //this.setupScene()
-    this.loadCADAsset('../data/Dead_eye_bearing.zcad')
+    this.loadCADAsset('data/Dead_eye_bearing.zcad')
   }
 
   componentDidUpdate() {
-    console.log('here')
-    const file = '../data/' + this.props.file[0].path
-    this.loadCADAsset(file)
+    // console.log('here')
+    // const file = 'data/' + this.props.file[0].path
+    // this.loadCADAsset(file)
   }
   setupScene() {
     const material = new Material('surfaces', 'SimpleSurfaceShader')
