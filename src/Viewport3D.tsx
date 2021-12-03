@@ -21,7 +21,7 @@ class Viewport3D extends React.Component<any, any> {
   renderer?: GLRenderer
   canvasRef: React.RefObject<any>
 
-  file
+  file: any
 
   constructor(props: any) {
     super(props)
@@ -39,42 +39,22 @@ class Viewport3D extends React.Component<any, any> {
 
     const camera = this.renderer.getViewport().getCamera()
     camera.setPositionAndTarget(new Vec3(6, 6, 5), new Vec3(0, 0, 1.5))
-
-    //this.setupScene()
-    //this.loadCADAsset('data/Dead_eye_bearing.zcad')
   }
 
   componentDidUpdate() {
     if (this.props.file) {
-      const file = 'data/' + this.props.file[0].path
-      this.loadCADAsset(file)
+      const file = this.props.file[0].path
+      const filepath = 'data/' + file
+      const extension = file.split('.')[1]
+      if (extension === 'zcad') {
+        this.loadZCADAsset(filepath)
+      } else {
+        // TODO: send to zea cloud
+      }
     }
   }
-  setupScene() {
-    const material = new Material('surfaces', 'SimpleSurfaceShader')
-    material.getParameter('BaseColor')?.setValue(new Color(0.5, 0.5, 0.5))
-    const sphere = new Sphere(1.0, 20, 20)
 
-    const createSphere = (name: string, position: Vec3) => {
-      const geomItem = new GeomItem(name, sphere, material, new Xfo(position))
-      return geomItem
-    }
-
-    const geomItem0 = createSphere('sphere0', new Vec3(0, 0, 0))
-    const geomItem1 = createSphere('sphere1', new Vec3(0, 5, 0))
-    const geomItem2 = createSphere('sphere2', new Vec3(0, -5, 0))
-    const geomItem3 = createSphere('sphere3', new Vec3(5, 0, 0))
-    const geomItem4 = createSphere('sphere5', new Vec3(-5, 0, 0))
-
-    // Add geometry to the SceneTree and also create a hierarchy of geometry by parenting geometry.
-    this.scene.getRoot().addChild(geomItem0)
-    this.scene.getRoot().addChild(geomItem1)
-    geomItem1.addChild(geomItem2)
-    geomItem2.addChild(geomItem3)
-    geomItem2.addChild(geomItem4)
-  }
-
-  loadCADAsset(filepath: string) {
+  loadZCADAsset(filepath: string) {
     const asset = new CADAsset()
     asset.load(filepath).then(() => {
       this.renderer.frameAll()
