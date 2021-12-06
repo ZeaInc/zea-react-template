@@ -16,9 +16,9 @@ const App = () => {
   const [scene] = useState<Scene>(new Scene())
   const [file, setFile] = useState<any>(null)
   const [open, setOpen] = useState<boolean>(true)
-  useEffect(() => {
-    console.log('hi')
-  })
+  // useEffect(() => {
+  //   console.log('hi')
+  // })
 
   return (
     <ReflexContainer orientation="horizontal">
@@ -33,6 +33,7 @@ const App = () => {
               <Dropzone
                 onDrop={(acceptedFiles) => {
                   setFile(acceptedFiles)
+                  setFile(null)
                   setOpen(false)
                 }}
               >
