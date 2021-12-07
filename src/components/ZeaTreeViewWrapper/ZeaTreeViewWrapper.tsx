@@ -1,4 +1,5 @@
 import '@zeainc/zea-tree-view'
+
 import { useEffect, useRef } from 'react'
 
 const ZeaTreeViewWrapper = (props: any) => {
@@ -6,9 +7,11 @@ const ZeaTreeViewWrapper = (props: any) => {
 
   useEffect(() => {
     const { current } = ref
-    const { scene } = props
-    if (!current.rootTreeItem) {
-      current.setTreeItem(scene.getRoot())
+    const { scene, appData } = props
+
+    if (!current.rootTreeItem && appData) {
+      console.log(appData)
+      current.setTreeItem(scene.getRoot(), appData)
     }
   })
 
