@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {
   Scene,
   GLRenderer,
@@ -10,6 +8,7 @@ import {
   Color,
   Xfo,
 } from '@zeainc/zea-engine'
+import React from 'react'
 
 class Viewport3D extends React.Component<any, any> {
   scene: Scene
