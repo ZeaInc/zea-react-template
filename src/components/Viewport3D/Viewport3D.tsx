@@ -6,6 +6,9 @@ import {
   Color,
   TreeItem,
   InstanceItem,
+  AssetLoadContext,
+  Material,
+  GeomItem,
 } from '@zeainc/zea-engine'
 import React from 'react'
 
@@ -67,8 +70,7 @@ class Viewport3D extends React.Component<any, any> {
     this.state.setAppData(appData)
 
     // Setup TreeView Display
-    this.loadZCADAsset('data/HC_SRO4.zcad')
-
+    this.loadCADAsset('data/HC_SRO4.zcad', 'data/HC_SRO4.zcad')
     this.setPointerEvents()
   }
 
@@ -129,13 +131,28 @@ class Viewport3D extends React.Component<any, any> {
       }
     })
   }
-  loadZCADAsset(filepath: string) {
-    const asset = new CADAsset()
-    asset.load(filepath).then(() => {
+
+  loadCADAsset(zcad: any, filename: string) {
+    const asset = new CADAsset(filename)
+
+    const context = new AssetLoadContext()
+    // pass the camera in wth the AssetLoadContext so that
+    // PMI classes can bind to it.
+    //@ts-ignore
+    context.camera = this.renderer.getViewport().getCamera()
+    asset.load(zcad, context).then(() => {
+      const materials = asset.getMaterialLibrary().getMaterials()
+      materials.forEach((material: Material) => {
+        // Convert linear space values to gamma space values.
+        // The shaders assume gamma space values, to convert to linear at render time.
+        const baseColorParam = material.getParameter('BaseColor')
+        if (baseColorParam) {
+          const baseColor = baseColorParam.value.toGamma()
+          baseColorParam.setValue(baseColor)
+        }
+      })
+
       this.renderer.frameAll()
-    })
-    asset.getGeometryLibrary().on('loaded', () => {
-      postMessage('done-loading')
     })
     this.scene.getRoot().addChild(asset)
   }
