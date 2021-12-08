@@ -11,6 +11,7 @@ const ZeaTreeViewWrapper = (props: any) => {
 
     if (!current.rootTreeItem && appData) {
       console.log(appData)
+      appData.displayTreeComplexity = false
       current.setTreeItem(scene.getRoot(), appData)
     }
   })
