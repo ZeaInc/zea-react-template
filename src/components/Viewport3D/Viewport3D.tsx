@@ -108,7 +108,7 @@ class Viewport3D extends React.Component<any, any> {
 
     this.renderer.getViewport().on('pointerUp', (event: any) => {
       // Detect a right click
-      if (event.button == 0 && event.intersectionData) {
+      if (event.button === 0 && event.intersectionData) {
         // // if the selection tool is active then do nothing, as it will
         // // handle single click selection.s
         // const toolStack = toolManager.toolStack
