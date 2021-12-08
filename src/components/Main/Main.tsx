@@ -13,6 +13,7 @@ import './Main.css'
 const Main = () => {
   const [scene] = useState<Scene>(new Scene())
   const [progressValue, setProgressValue] = useState<number>(0)
+  const [appData, setAppData] = useState(null)
 
   useEffect(() => {
     resourceLoader.on('progressIncremented', (event) => {
@@ -26,10 +27,10 @@ const Main = () => {
 
       <SplitPane defaultSize={300} minSize={10} split="vertical" style={{}}>
         <div className="Main__left-pane">
-          <ZeaTreeViewWrapper scene={scene} />
+          <ZeaTreeViewWrapper scene={scene} appData={appData}/>
         </div>
         <div className="Main__main-pane">
-          <Viewport3D scene={scene} />
+          <Viewport3D scene={scene} setAppData={setAppData} />
 
           {progressValue > 0 && progressValue < 1 && (
             <ProgressBar value={progressValue} />
