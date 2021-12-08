@@ -1,0 +1,9 @@
+.ProgressBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.ProgressBar__progress {
+  width: 100%;
+}
