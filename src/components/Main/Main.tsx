@@ -17,7 +17,9 @@ const Main = () => {
 
   useEffect(() => {
     resourceLoader.on('progressIncremented', (event) => {
-      setProgressValue(event.percent)
+      const fraction = event.percent / 100
+
+      setProgressValue(fraction)
     })
   })
 
@@ -27,7 +29,7 @@ const Main = () => {
 
       <SplitPane defaultSize={300} minSize={10} split="vertical" style={{}}>
         <div className="Main__left-pane">
-          <ZeaTreeViewWrapper scene={scene} appData={appData}/>
+          <ZeaTreeViewWrapper scene={scene} appData={appData} />
         </div>
         <div className="Main__main-pane">
           <Viewport3D scene={scene} setAppData={setAppData} />
