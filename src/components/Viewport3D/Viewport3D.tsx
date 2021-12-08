@@ -10,6 +10,8 @@ import {
 } from '@zeainc/zea-engine'
 import React from 'react'
 
+import './Viewport3D.css'
+
 class Viewport3D extends React.Component<any, any> {
   scene: Scene
   renderer?: GLRenderer
@@ -62,13 +64,15 @@ class Viewport3D extends React.Component<any, any> {
   // The Viewport3D component needs a reference to the canvas in order to initialize.
   render() {
     return (
-      <canvas
-        ref={this.canvasRef}
-        className="screen"
-        id="canvas"
-        width="500px"
-        height="500px"
-      />
+      <div className="Viewport3D">
+        <canvas
+          ref={this.canvasRef}
+          className="screen"
+          id="canvas"
+          width="500px"
+          height="500px"
+        />
+      </div>
     )
   }
 }
