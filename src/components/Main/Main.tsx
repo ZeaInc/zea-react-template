@@ -1,6 +1,7 @@
 import { Scene, resourceLoader } from '@zeainc/zea-engine'
 import { useEffect, useState } from 'react'
 import SplitPane from 'react-split-pane'
+import { ZeaFPSDisplayWrapper } from '../FPSDisplay/ZeaFPSDisplayWrapper'
 
 import { Header } from '../Header/Header'
 import { ProgressBar } from '../ProgressBar/ProgressBar'
@@ -37,6 +38,9 @@ const Main = () => {
           {progressValue > 0 && progressValue < 1 && (
             <ProgressBar value={progressValue} />
           )}
+          <div className="fps-display">
+            <ZeaFPSDisplayWrapper appData={appData}></ZeaFPSDisplayWrapper>
+          </div>
         </div>
       </SplitPane>
     </div>
