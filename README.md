@@ -32,3 +32,24 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Features
+
+Plugins:
+
+- [Zea-CAD](https://docs.zea.live/zea-cad/#/)
+- [Zea-UX](https://docs.zea.live/zea-ux/#/)
+- Zea-Tree-View
+  - navigate the tree-view with the up/down and left/right arrows on your keyboard.
+
+Debugging features:
+
+- FPS display
+- Tree weight cost <br>
+  to enable this feature, in ZeaTreeViewWrapper, set appData.displayTreeComplexity to equal true
+  ```tsx
+  appData.displayTreeComplexity = true
+  current.setTreeItem(scene.getRoot(), appData)
+  ```
+  This feature color codes each tree node to indicate the size of the subtree when expanded.
+  Red means that the tree has high levels of complexity, darker tones mean relatively less complexity.
