@@ -27,7 +27,7 @@ const Main = () => {
     <div className="Main">
       <Header />
 
-      <SplitPane defaultSize={300} minSize={10} split="vertical" style={{}}>
+      <SplitPane defaultSize={300} minSize={30} split="vertical" style={{}}>
         <div className="Main__left-pane">
           <ZeaTreeViewWrapper scene={scene} appData={appData} />
         </div>
