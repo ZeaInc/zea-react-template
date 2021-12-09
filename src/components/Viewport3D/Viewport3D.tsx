@@ -8,7 +8,6 @@ import {
   InstanceItem,
   AssetLoadContext,
   Material,
-  GeomItem,
 } from '@zeainc/zea-engine'
 import React from 'react'
 
