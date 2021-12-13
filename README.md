@@ -39,8 +39,7 @@ Plugins:
 
 - [Zea-CAD](https://docs.zea.live/zea-cad/#/)
 - [Zea-UX](https://docs.zea.live/zea-ux/#/)
-- Zea-Tree-View
-  - navigate the tree-view with the up/down and left/right arrows on your keyboard.
+- [Zea-Tree-View](https://github.com/ZeaInc/zea-tree-view)
 
 Debugging features:
 
