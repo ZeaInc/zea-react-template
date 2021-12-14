@@ -1,4 +1,4 @@
-import { Scene, resourceLoader } from '@zeainc/zea-engine'
+import { Scene, resourceLoader, TreeItem } from '@zeainc/zea-engine'
 import { useEffect, useState } from 'react'
 import SplitPane from 'react-split-pane'
 import { ZeaFPSDisplayWrapper } from '../FPSDisplay/ZeaFPSDisplayWrapper'
@@ -18,6 +18,7 @@ const Main = () => {
 
   const [isShown, setIsShown] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [selected, setSelected] = useState<TreeItem>()
 
   useEffect(() => {
     resourceLoader.on('progressIncremented', (event) => {
@@ -30,7 +31,6 @@ const Main = () => {
   const showContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     // Disable the default context menu
     event.preventDefault()
-
     setIsShown(false)
     const newPosition = {
       x: event.pageX,
@@ -44,9 +44,8 @@ const Main = () => {
   const hideContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     setIsShown(false)
   }
-  const [selectedValue, setSelectedValue] = useState<String>()
-  const doSomething = (selectedValue: String) => {
-    setSelectedValue(selectedValue)
+  const hideModel = () => {
+    selected.visibleParam.value = false
   }
   return (
     <div
@@ -54,19 +53,13 @@ const Main = () => {
       onContextMenu={showContextMenu}
       onClick={hideContextMenu}
     >
-      {isShown && (
+      {isShown && selected && (
         <div
           style={{ top: position.y, left: position.x }}
           className="custom-context-menu"
         >
-          <div className="option" onClick={() => doSomething('Option 1')}>
-            Option #1
-          </div>
-          <div className="option" onClick={() => doSomething('Option 2')}>
-            Option #2
-          </div>
-          <div className="option" onClick={() => doSomething('Option 3')}>
-            Option #3
+          <div className="option" onClick={() => hideModel()}>
+            "Hide"
           </div>
         </div>
       )}
@@ -78,7 +71,11 @@ const Main = () => {
           <ZeaTreeViewWrapper scene={scene} appData={appData} />
         </div>
         <div className="Main__main-pane">
-          <Viewport3D scene={scene} setAppData={setAppData} />
+          <Viewport3D
+            scene={scene}
+            setAppData={setAppData}
+            setSelected={setSelected}
+          />
           {progressValue > 0 && progressValue < 1 && (
             <ProgressBar value={progressValue} />
           )}
