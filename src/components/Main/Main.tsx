@@ -1,6 +1,7 @@
 import { Scene, resourceLoader, TreeItem } from '@zeainc/zea-engine'
 import { useEffect, useState } from 'react'
 import SplitPane from 'react-split-pane'
+import { ContextMenu } from '../ContextMenu/ContextMenu'
 import { ZeaFPSDisplayWrapper } from '../FPSDisplay/ZeaFPSDisplayWrapper'
 
 import { Header } from '../Header/Header'
@@ -36,7 +37,6 @@ const Main = () => {
       x: event.pageX,
       y: event.pageY,
     }
-
     setPosition(newPosition)
     setIsShown(true)
   }
@@ -44,9 +44,7 @@ const Main = () => {
   const hideContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     setIsShown(false)
   }
-  const hideModel = () => {
-    selected.visibleParam.value = false
-  }
+
   return (
     <div
       className="Main"
@@ -54,14 +52,7 @@ const Main = () => {
       onClick={hideContextMenu}
     >
       {isShown && selected && (
-        <div
-          style={{ top: position.y, left: position.x }}
-          className="custom-context-menu"
-        >
-          <div className="option" onClick={() => hideModel()}>
-            "Hide"
-          </div>
-        </div>
+        <ContextMenu position={position} selected={selected}></ContextMenu>
       )}
 
       <Header />
