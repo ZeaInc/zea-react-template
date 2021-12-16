@@ -1,9 +1,12 @@
+import { TreeItem } from '@zeainc/zea-engine'
 import { MenuItem } from './MenuItem'
 
 const ContextMenu = (props: any) => {
-  const { position, selected } = props
+  const { position, contextItem } = props
   const hideModel = () => {
-    selected.visibleParam.value = false
+    if (contextItem instanceof TreeItem) {
+      contextItem.visibleParam.value = false
+    }
   }
   return (
     <div

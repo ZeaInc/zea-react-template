@@ -51,8 +51,8 @@ const Main = () => {
       onContextMenu={showContextMenu}
       onClick={hideContextMenu}
     >
-      {isShown && selected && (
-        <ContextMenu position={position} selected={selected}></ContextMenu>
+      {isShown && (
+        <ContextMenu position={position} contextItem={selected}></ContextMenu>
       )}
 
       <Header />
