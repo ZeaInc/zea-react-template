@@ -32,6 +32,7 @@ class Viewport3D extends React.Component<any, any> {
 
     this.state = {
       setAppData: props.setAppData,
+      setSelected: props.setSelected,
     }
     this.canvasRef = React.createRef()
   }
@@ -90,6 +91,8 @@ class Viewport3D extends React.Component<any, any> {
       if (event.intersectionData) {
         const geomItem = filterItem(event.intersectionData.geomItem)
         if (geomItem) {
+          // set selected in main
+          this.props.setSelected(geomItem)
           console.log(geomItem.getPath())
 
           const geom = event.intersectionData.geomItem.geomParam.value
