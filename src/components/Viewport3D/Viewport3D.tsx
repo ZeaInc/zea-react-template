@@ -1,3 +1,4 @@
+import { CADAsset, CADBody, PMIItem } from '@zeainc/zea-cad'
 import {
   Scene,
   GLRenderer,
@@ -9,15 +10,11 @@ import {
   AssetLoadContext,
   Material,
 } from '@zeainc/zea-engine'
+import { SelectionManager } from '@zeainc/zea-ux'
+import type { AppData } from '@zeainc/zea-ux'
 import React from 'react'
 
 import './Viewport3D.css'
-
-//@ts-ignore
-import { CADAsset, CADBody, PMIItem } from '@zeainc/zea-cad'
-
-//@ts-ignore
-import { SelectionManager } from '@zeainc/zea-ux'
 
 class Viewport3D extends React.Component<any, any> {
   scene: Scene
@@ -52,10 +49,12 @@ class Viewport3D extends React.Component<any, any> {
     this.scene.setEnvMap(envMap)
 
     // appData is used in initializing the selectionManager and ZeaTreeView web component
-    const appData: Record<any, any> = {
+    const appData: AppData = {
       scene: this.scene,
       renderer: this.renderer,
       selectionManager: null,
+      parentItem: null,
+      session: null,
     }
 
     // Setup SelectionManager for highlights
@@ -125,7 +124,7 @@ class Viewport3D extends React.Component<any, any> {
           if (!event.shiftKey) {
             this.selectionManager.toggleItemSelection(item, !event.ctrlKey)
           } else {
-            const items = new Set()
+            const items = new Set<TreeItem>()
             items.add(item)
             this.selectionManager.deselectItems(items)
           }
