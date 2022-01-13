@@ -1,6 +1,7 @@
-import { Scene, resourceLoader } from '@zeainc/zea-engine'
+import { Scene, resourceLoader, TreeItem } from '@zeainc/zea-engine'
 import { useEffect, useState } from 'react'
 import SplitPane from 'react-split-pane'
+import { ContextMenu } from '../ContextMenu/ContextMenu'
 import { ZeaFPSDisplayWrapper } from '../FPSDisplay/ZeaFPSDisplayWrapper'
 
 import { Header } from '../Header/Header'
@@ -16,6 +17,10 @@ const Main = () => {
   const [progressValue, setProgressValue] = useState<number>(0)
   const [appData, setAppData] = useState(null)
 
+  const [isShown, setIsShown] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [selected, setSelected] = useState<TreeItem>()
+
   useEffect(() => {
     resourceLoader.on('progressIncremented', (event) => {
       const fraction = event.percent / 100
@@ -24,8 +29,32 @@ const Main = () => {
     })
   })
 
+  const showContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    // Disable the default context menu
+    event.preventDefault()
+    setIsShown(false)
+    const newPosition = {
+      x: event.pageX,
+      y: event.pageY,
+    }
+    setPosition(newPosition)
+    setIsShown(true)
+  }
+
+  const hideContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    setIsShown(false)
+  }
+
   return (
-    <div className="Main">
+    <div
+      className="Main"
+      onContextMenu={showContextMenu}
+      onClick={hideContextMenu}
+    >
+      {isShown && (
+        <ContextMenu position={position} contextItem={selected}></ContextMenu>
+      )}
+
       <Header />
 
       <SplitPane defaultSize={300} minSize={30} split="vertical" style={{}}>
@@ -33,8 +62,11 @@ const Main = () => {
           <ZeaTreeViewWrapper scene={scene} appData={appData} />
         </div>
         <div className="Main__main-pane">
-          <Viewport3D scene={scene} setAppData={setAppData} />
-
+          <Viewport3D
+            scene={scene}
+            setAppData={setAppData}
+            setSelected={setSelected}
+          />
           {progressValue > 0 && progressValue < 1 && (
             <ProgressBar value={progressValue} />
           )}

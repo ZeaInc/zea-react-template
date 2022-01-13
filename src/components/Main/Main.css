@@ -44,3 +44,21 @@
   bottom: 45px;
   right: 20px;
 }
+
+
+
+.custom-context-menu {
+  position: fixed;
+  z-index: 10;
+  background: orange;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option {
+  cursor: pointer;
+  padding: 15px 30px;
+}
+
+.option:hover {
+  background: yellow;
+}
