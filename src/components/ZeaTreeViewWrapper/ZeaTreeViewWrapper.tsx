@@ -16,6 +16,8 @@ const ZeaTreeViewWrapper = (props: any) => {
   })
 
   // @ts-ignore
+  // See:
+  // https://custom-elements-everywhere.com/libraries/react/results/results.html
   return <zea-tree-view ref={ref}></zea-tree-view>
 }
 
