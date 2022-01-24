@@ -1,4 +1,3 @@
-import { CADAsset, CADBody, PMIItem } from '@zeainc/zea-cad'
 import {
   Scene,
   GLRenderer,
@@ -9,6 +8,9 @@ import {
   InstanceItem,
   AssetLoadContext,
   Material,
+  CADAsset,
+  CADBody,
+  PMIItem,
 } from '@zeainc/zea-engine'
 import { SelectionManager } from '@zeainc/zea-ux'
 import type { AppData } from '@zeainc/zea-ux'
