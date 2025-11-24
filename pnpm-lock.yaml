@@ -23,6 +23,9 @@ importers:
       '@types/node':
         specifier: ^12.0.0
         version: 12.20.55
+      '@zeainc/sim-stream':
+        specifier: 0.0.2-6063983
+        version: 0.0.2-6063983
       '@zeainc/zea-engine':
         specifier: 4.19.0
         version: 4.19.0
@@ -1493,6 +1496,13 @@ packages:
 
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
+
+  '@zeainc/sim-stream@0.0.2-6063983':
+    resolution: {integrity: sha512-ijCBFl3CRQB5GAI7uDZB9Oz86XLmvGWeq//kkDDcvlCaC50bvX1OpHtL93vbJCKO0IHdghHCImGe2GC94KIiBg==, tarball: https://npm.pkg.github.com/download/@zeainc/sim-stream/0.0.2-6063983/dee74c5c9f062182c468effbddadf208ead835fd}
+
+  '@zeainc/zea-engine@4.18.0':
+    resolution: {integrity: sha512-kmjJBTeENNhXc8siNQmXSWQO3zJa2dZV9iNY29lVdr0H6LYcYslm6EpoyNWWm5cmWh5XMiuYn7Ahr7aE0II7Jg==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-engine/4.18.0/caab8eb6fa38ebd5b63479fcd04a231328dd28fa}
+    engines: {node: '>=10'}
 
   '@zeainc/zea-engine@4.19.0':
     resolution: {integrity: sha512-ahIpg9mi+EWvsunDo3tp2CChxL45bQcUVylMFPOxk2tvihJ3SsaxJFmnvsbWiFoQagtCwoBSEwvmDM8BODTAfg==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-engine/4.19.0/eaeb9c5862b6cce6c13fdd1ff161f1cba9fdbe29}
@@ -7626,6 +7636,17 @@ snapshots:
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
+
+  '@zeainc/sim-stream@0.0.2-6063983':
+    dependencies:
+      '@zeainc/zea-engine': 4.18.0
+      '@zeainc/zea-ux': 4.13.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@zeainc/zea-engine@4.18.0':
+    dependencies:
+      lodash-es: 4.17.21
 
   '@zeainc/zea-engine@4.19.0':
     dependencies:
