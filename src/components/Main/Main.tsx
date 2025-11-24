@@ -1,6 +1,7 @@
 import { Scene, resourceLoader, TreeItem } from '@zeainc/zea-engine'
 import { useEffect, useState } from 'react'
-import SplitPane from 'react-split-pane'
+import { Allotment } from 'allotment'
+import 'allotment/dist/style.css'
 import { ContextMenu } from '../ContextMenu/ContextMenu'
 import { ZeaFPSDisplayWrapper } from '../FPSDisplay/ZeaFPSDisplayWrapper'
 
@@ -57,24 +58,30 @@ const Main = () => {
 
       <Header />
 
-      <SplitPane defaultSize={300} minSize={30} split="vertical" style={{}}>
-        <div className="Main__left-pane">
-          <ZeaTreeViewWrapper scene={scene} appData={appData} />
-        </div>
-        <div className="Main__main-pane">
-          <Viewport3D
-            scene={scene}
-            setAppData={setAppData}
-            setSelected={setSelected}
-          />
-          {progressValue > 0 && progressValue < 1 && (
-            <ProgressBar value={progressValue} />
-          )}
-          <div className="fps-display">
-            <ZeaFPSDisplayWrapper appData={appData}></ZeaFPSDisplayWrapper>
-          </div>
-        </div>
-      </SplitPane>
+      <div className="Main__split-container">
+        <Allotment>
+          <Allotment.Pane minSize={30} preferredSize={300}>
+            <div className="Main__left-pane">
+              <ZeaTreeViewWrapper scene={scene} appData={appData} />
+            </div>
+          </Allotment.Pane>
+          <Allotment.Pane>
+            <div className="Main__main-pane">
+              <Viewport3D
+                scene={scene}
+                setAppData={setAppData}
+                setSelected={setSelected}
+              />
+              {progressValue > 0 && progressValue < 1 && (
+                <ProgressBar value={progressValue} />
+              )}
+              <div className="fps-display">
+                <ZeaFPSDisplayWrapper appData={appData}></ZeaFPSDisplayWrapper>
+              </div>
+            </div>
+          </Allotment.Pane>
+        </Allotment>
+      </div>
     </div>
   )
 }

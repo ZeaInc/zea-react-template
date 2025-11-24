@@ -8,14 +8,14 @@ This is a template app which intregrates Zea's tools (such as the
 Clone this repository to your local machine, and then in the project directory run:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `pnpm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm build`
+### `pnpm build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.

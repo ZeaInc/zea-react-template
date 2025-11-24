@@ -5,6 +5,7 @@ import {
   EnvMap,
   Color,
   TreeItem,
+  GeomItem,
   InstanceItem,
   AssetLoadContext,
   Material,
@@ -55,7 +56,6 @@ class Viewport3D extends React.Component<any, any> {
       scene: this.scene,
       renderer: this.renderer,
       selectionManager: null,
-      parentItem: null,
       session: null,
     }
 
@@ -96,16 +96,16 @@ class Viewport3D extends React.Component<any, any> {
           this.props.setSelected(geomItem)
           console.log(geomItem.getPath())
 
-          const geom = event.intersectionData.geomItem.geomParam.value
+          const geom = (event.intersectionData.geomItem as GeomItem).geomParam.value
           console.log(
             geom.getNumVertices(),
-            event.intersectionData.geomItem.geomIndex
+            event.intersectionData.componentId
           )
-          let item = event.intersectionData.geomItem
+          let item: TreeItem | undefined = event.intersectionData.geomItem
           while (item) {
             const globalXfo = item.localXfoParam.value
             console.log(item.getName(), globalXfo.sc.toString())
-            item = item.getOwner()
+            item = item.getOwner() as TreeItem | undefined
           }
         }
       }
