@@ -27,8 +27,8 @@ importers:
         specifier: 4.19.0
         version: 4.19.0
       '@zeainc/zea-tree-view':
-        specifier: 0.1.9-ef1d08f
-        version: 0.1.9-ef1d08f
+        specifier: 0.1.9-9baedc5
+        version: 0.1.9-9baedc5
       '@zeainc/zea-ux':
         specifier: ^4.13.0
         version: 4.13.0
@@ -1498,8 +1498,8 @@ packages:
     resolution: {integrity: sha512-ahIpg9mi+EWvsunDo3tp2CChxL45bQcUVylMFPOxk2tvihJ3SsaxJFmnvsbWiFoQagtCwoBSEwvmDM8BODTAfg==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-engine/4.19.0/eaeb9c5862b6cce6c13fdd1ff161f1cba9fdbe29}
     engines: {node: '>=10'}
 
-  '@zeainc/zea-tree-view@0.1.9-ef1d08f':
-    resolution: {integrity: sha512-JneCCVU85UUWhkSJqTGybSmj6039fEFdxwTRIiCpULLXqiUeQorKmR/JhIIvImTJhyH2+35ApH/QJ04C/QPljg==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-tree-view/0.1.9-ef1d08f/1142b1ececae2e8cd5a808c7fe77f5bce511f159}
+  '@zeainc/zea-tree-view@0.1.9-9baedc5':
+    resolution: {integrity: sha512-KEqvEi5CSByE09vDXeLg/QR8t2FY2WjcZx0HS4l8lFi6U41u5yGtqYgtzAA6w/DRIuonBo4e9/VdizRGjQQI+A==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-tree-view/0.1.9-9baedc5/33f35f8b611909b8ff4d27b1bbacb56e1878d3e1}
     engines: {node: '>=10'}
 
   '@zeainc/zea-ux@4.13.0':
@@ -7631,7 +7631,7 @@ snapshots:
     dependencies:
       lodash-es: 4.17.21
 
-  '@zeainc/zea-tree-view@0.1.9-ef1d08f': {}
+  '@zeainc/zea-tree-view@0.1.9-9baedc5': {}
 
   '@zeainc/zea-ux@4.13.0':
     dependencies:
