@@ -15,6 +15,7 @@ import {
 } from '@zeainc/zea-engine'
 import { SelectionManager } from '@zeainc/zea-ux'
 import type { AppData } from '@zeainc/zea-ux'
+import { VoxelSimulation, GLVoxelPass } from '@zeainc/sim-stream'
 import React from 'react'
 
 import './Viewport3D.css'
