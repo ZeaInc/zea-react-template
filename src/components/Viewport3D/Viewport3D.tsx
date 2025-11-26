@@ -68,11 +68,34 @@ class Viewport3D extends React.Component<any, any> {
 
     appData.selectionManager = this.selectionManager
 
+    // ////////////////////////////////////////////
+    // Setup SimStream Voxel Rendering
+
+    // Add voxel rendering pass to the rendering pipeline
+    const voxelPass = new GLVoxelPass()
+    this.renderer.addPass(voxelPass)
+
+    const urlParams = new URLSearchParams(window.location.search)
+    // Create and configure the voxel simulation
+    const voxelSimulation = new VoxelSimulation('voxels')
+    this.scene.getRoot().addChild(voxelSimulation)
+    if (urlParams.has('sim')) {
+      const simName = urlParams.get('sim') as string
+      voxelSimulation.loadSim(simName).then(() => {
+        // Frame all objects in the viewport after loading completes
+        setTimeout(() => {
+          this.renderer!.frameAll()
+        }, 100)
+        this.renderer.frameAll()
+      })
+    }
+    // Add the voxel simulation to the scene graph
+
     //send appData back to App.tsx, then to ZeaTreeViewWrapper.
     this.state.setAppData(appData)
 
     // Setup TreeView Display
-    this.loadCADAsset('data/HC_SRO4.zcad', 'data/HC_SRO4.zcad')
+    // this.loadCADAsset('data/HC_SRO4.zcad', 'data/HC_SRO4.zcad')
     this.setPointerEvents()
   }
 
@@ -97,11 +120,9 @@ class Viewport3D extends React.Component<any, any> {
           this.props.setSelected(geomItem)
           console.log(geomItem.getPath())
 
-          const geom = (event.intersectionData.geomItem as GeomItem).geomParam.value
-          console.log(
-            geom.getNumVertices(),
-            event.intersectionData.componentId
-          )
+          const geom = (event.intersectionData.geomItem as GeomItem).geomParam
+            .value
+          console.log(geom.getNumVertices(), event.intersectionData.componentId)
           let item: TreeItem | undefined = event.intersectionData.geomItem
           while (item) {
             const globalXfo = item.localXfoParam.value

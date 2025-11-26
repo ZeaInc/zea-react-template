@@ -18,7 +18,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
-    "@zeainc/sim-stream": "0.0.2-6063983",
+    "@zeainc/sim-stream": "0.0.2-44713b9",
     "@zeainc/zea-engine": "4.19.0",
     "@zeainc/zea-tree-view": "0.1.9-ef1d08f",
     "@zeainc/zea-ux": "^4.13.0",
