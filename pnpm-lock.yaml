@@ -41,7 +41,7 @@ importers:
         version: 11.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: ^12.1.10
-        version: 12.8.3(@testing-library/dom@10.4.1)
+        version: 12.8.3(@testing-library/dom@7.31.2)
       '@types/jest':
         specifier: ^26.0.15
         version: 26.0.24
@@ -54,6 +54,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.7
         version: 18.3.7(@types/react@18.3.27)
+      '@zeainc/sim-stream':
+        specifier: 0.0.2-44713b9
+        version: 0.0.2-44713b9
       prettier:
         specifier: ^2.5.1
         version: 2.8.8
@@ -1164,10 +1167,6 @@ packages:
     resolution: {integrity: sha512-DOBOK255wfQxguUta2INKkzPj6AIS6iafZYiYmHn6W3pHlycSRRlvWKCfLDG10fXfLWqE3DJHgRUOyJYmARa7g==}
     engines: {node: '>=10'}
 
-  '@testing-library/dom@10.4.1':
-    resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
-    engines: {node: '>=18'}
-
   '@testing-library/dom@7.31.2':
     resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
     engines: {node: '>=10'}
@@ -1199,9 +1198,6 @@ packages:
 
   '@types/aria-query@4.2.2':
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
-
-  '@types/aria-query@5.0.4':
-    resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1494,6 +1490,9 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
+  '@zeainc/sim-stream@0.0.2-44713b9':
+    resolution: {integrity: sha512-k/1HNf6zqJILSwm1MdqhbvrCFSDvboY5YpncyH5jKCQUjsOuVWMe5SLOpgoLpNTZo1ky0g+yCVE6ZGOBJv68xg==, tarball: https://npm.pkg.github.com/download/@zeainc/sim-stream/0.0.2-44713b9/3b0ad3ebee924f444bcdb613cc9ddd554421c09d}
+
   '@zeainc/zea-engine@4.19.0':
     resolution: {integrity: sha512-ahIpg9mi+EWvsunDo3tp2CChxL45bQcUVylMFPOxk2tvihJ3SsaxJFmnvsbWiFoQagtCwoBSEwvmDM8BODTAfg==, tarball: https://npm.pkg.github.com/download/@ZeaInc/zea-engine/4.19.0/eaeb9c5862b6cce6c13fdd1ff161f1cba9fdbe29}
     engines: {node: '>=10'}
@@ -1639,9 +1638,6 @@ packages:
   aria-query@4.2.2:
     resolution: {integrity: sha512-o/HelwhuKpTj/frsOsbNLNgnNGVIFsVP/SW2BSF14gVl7kAfMOJ6/8wUAUvG1R1NHKrfG+2sHZTu0yauT1qBrA==}
     engines: {node: '>=6.0'}
-
-  aria-query@5.3.0:
-    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
 
   aria-query@5.3.2:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
@@ -2305,10 +2301,6 @@ packages:
   depd@2.0.0:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
     engines: {node: '>= 0.8'}
-
-  dequal@2.0.3:
-    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
-    engines: {node: '>=6'}
 
   destroy@1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
@@ -4603,7 +4595,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.13.0:
@@ -7180,17 +7171,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@testing-library/dom@10.4.1':
-    dependencies:
-      '@babel/code-frame': 7.27.1
-      '@babel/runtime': 7.28.4
-      '@types/aria-query': 5.0.4
-      aria-query: 5.3.0
-      dom-accessibility-api: 0.5.16
-      lz-string: 1.5.0
-      picocolors: 1.1.1
-      pretty-format: 27.5.1
-
   '@testing-library/dom@7.31.2':
     dependencies:
       '@babel/code-frame': 7.27.1
@@ -7221,18 +7201,16 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@testing-library/user-event@12.8.3(@testing-library/dom@10.4.1)':
+  '@testing-library/user-event@12.8.3(@testing-library/dom@7.31.2)':
     dependencies:
       '@babel/runtime': 7.28.4
-      '@testing-library/dom': 10.4.1
+      '@testing-library/dom': 7.31.2
 
   '@tootallnate/once@1.1.2': {}
 
   '@trysound/sax@0.2.0': {}
 
   '@types/aria-query@4.2.2': {}
-
-  '@types/aria-query@5.0.4': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -7627,6 +7605,13 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
+  '@zeainc/sim-stream@0.0.2-44713b9':
+    dependencies:
+      '@zeainc/zea-engine': 4.19.0
+      '@zeainc/zea-ux': 4.13.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@zeainc/zea-engine@4.19.0':
     dependencies:
       lodash-es: 4.17.21
@@ -7761,10 +7746,6 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.28.4
       '@babel/runtime-corejs3': 7.28.4
-
-  aria-query@5.3.0:
-    dependencies:
-      dequal: 2.0.3
 
   aria-query@5.3.2: {}
 
@@ -8511,8 +8492,6 @@ snapshots:
   depd@1.1.2: {}
 
   depd@2.0.0: {}
-
-  dequal@2.0.3: {}
 
   destroy@1.2.0: {}
 
